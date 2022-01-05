@@ -1,7 +1,10 @@
+import NavBar from './componentes/Navbar' ;
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
-    <div> Desafio 1 </div>
+   <NavBar/>
   );
 }
 
