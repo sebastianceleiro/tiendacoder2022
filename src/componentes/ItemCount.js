@@ -1,4 +1,5 @@
 import react, {useState} from 'react' ;
+import { Button } from 'react-bootstrap';
 
 const ItemCount = ({stock,cantidadInicial}) => { 
 
@@ -12,16 +13,17 @@ const restarCantidad = () => {
     (cantidad >= 2) ? setCantidad (parseInt(cantidad) - 1) : alert ("Al menos debe haber 1 producto") ;
 }
 
-const addOn = () => {
-    alert ("agregado al carrito")
+const onAdd = () => {
+    alert (`Se han agregado ${cantidad} producto/s al carrito`)
 }
     return  (
         <>
-            <div>
-                <button onClick={restarCantidad}>-</button>
-                <p>{cantidad}</p>
-                <button onClick={sumarCantidad}>+</button>
-                <button onClick={addOn}>Guardar</button>
+            <div className="m-3">
+                <Button className="m-2 border border-secondary " variant="inherit" size="sm" onClick={restarCantidad}>-</Button>
+                {cantidad}
+                <Button className="m-2 border border-secondary " variant="inherit" size="sm" onClick={sumarCantidad}>+</Button>
+                <br></br>
+                <Button className="m-2" variant="secondary" size="sm" onClick={onAdd}>Guardar</Button>
             </div>
     
         </> )} ;
