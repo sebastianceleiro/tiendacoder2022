@@ -5,9 +5,9 @@ function NavBar ()  {
 
     return ( 
         <>
-  <Navbar bg="success" variant="dark">
+  <Navbar bg="primary" variant="dark">
     <Container>
-    <Navbar.Brand href="#home">Tienda</Navbar.Brand>
+    <Navbar.Brand href="#home">Tienda Deportes</Navbar.Brand>
     <Nav className="me-auto">
       <Nav.Link href="#home">Inicio</Nav.Link>
       <Nav.Link href="#features">Productos</Nav.Link>
