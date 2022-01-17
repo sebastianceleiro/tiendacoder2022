@@ -2,6 +2,7 @@ import { Card } from "react-bootstrap";
 
 const Item = ({id, nombre, descripcion, precio,url}) => {
     return ( <>
+            
              <Card style={{ width: '15rem' }}>
              <Card.Img variant="top" src={url} />
             <Card.Body>

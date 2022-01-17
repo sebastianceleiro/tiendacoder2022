@@ -1,27 +1,32 @@
 import ItemCount from './ItemCount' ;
 import ItemList from './ItemList' ;
 import productos from '../productos/productos';
+import { useState, useEffect } from 'react';
 
 const ItemListContainer = ({greeting}) => {
 
-    const promesa = new Promise ((resolve, reject) => {
+    const [arrayProductos, setArrayProductos] = useState([]) ;
+    const [loading, setLoading] = useState ("Cargando Productos...") ;
+
+    const promesa = new Promise ((resolve) => {
         setTimeout(() => {
         resolve (productos)
-        }, 4000);
+        }, 3000);
        
     }
     )
-    console.log(promesa)
+
     promesa.then(res => {
-        console.log("resultado promesa", res);
-        console.log(promesa)
+        setArrayProductos (res) ;
+        setLoading ("") ;
     })
 
     return ( 
         <>
         <div> {greeting} </div>
+        <div> {loading}</div>
         <br/>
-        <ItemList items={productos}/>
+        <ItemList items={arrayProductos}/>
         <ItemCount stock="10" cantidadInicial="1"/> 
        
         </> )
