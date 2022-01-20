@@ -1,4 +1,4 @@
-import ItemCount from './ItemCount' ;
+
 import ItemList from './ItemList' ;
 import productos from '../productos/productos';
 import { useState, useEffect } from 'react';
@@ -27,8 +27,6 @@ const ItemListContainer = ({greeting}) => {
         <div> {loading}</div>
         <br/>
         <ItemList items={arrayProductos}/>
-        <ItemCount stock="10" cantidadInicial="1"/> 
-       
         </> )
 }
 

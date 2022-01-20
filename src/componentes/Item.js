@@ -11,6 +11,7 @@ const Item = ({id, nombre, descripcion, precio,url}) => {
                 <Card.Text>{descripcion}</Card.Text>
              </Card.Body>
              </Card>
+            
              </>)
 }
 

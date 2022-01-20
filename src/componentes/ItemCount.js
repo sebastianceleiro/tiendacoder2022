@@ -17,7 +17,7 @@ const onAdd = () => {
     alert (`Se han agregado ${cantidad} producto/s al carrito`)
 }
     return  (
-        <>  <p>Este es el ItemCount</p>
+        <>  
             <div className="m-3">
                 <Button className="m-2 border border-secondary " variant="inherit" size="sm" onClick={restarCantidad}>-</Button>
                 {cantidad}
