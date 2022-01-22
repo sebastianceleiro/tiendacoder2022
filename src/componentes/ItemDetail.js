@@ -2,10 +2,11 @@ import {Card, Container} from 'react-bootstrap' ;
 import ItemCount from './ItemCount' ;
 
 const ItemDetail = ({producto}) => {
-    console.log(producto)
+
+
     return (
             <>
-            <div className="bg-light border w-50 m-auto text-center">Item Detail - Mostrando 1 producto
+            <div className="bg-light border w-50 m-auto text-center">Item Detail 
             <Card className="m-auto" style={{ width: '20rem' }}>
             <Card.Body>
                 <Card.Title>{producto.nombre}</Card.Title>

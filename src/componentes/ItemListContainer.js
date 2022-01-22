@@ -2,16 +2,17 @@
 import ItemList from './ItemList' ;
 import productos from '../productos/productos';
 import { useState, useEffect } from 'react';
+import {Spinner} from 'react-bootstrap' ;
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
 
     const [arrayProductos, setArrayProductos] = useState([]) ;
-    const [loading, setLoading] = useState ("Cargando Productos...") ;
+    const [loading, setLoading] = useState (<Spinner animation="border" variant="primary"/>) ;
 
     const promesa = new Promise ((resolve) => {
         setTimeout(() => {
         resolve (productos)
-        }, 3000);
+        }, 2000);
        
     }
     )
@@ -23,8 +24,7 @@ const ItemListContainer = ({greeting}) => {
 
     return ( 
         <>
-        <div> {greeting} </div>
-        <div> {loading}</div>
+        <div className="w-25 mt-2 text-center m-auto"> {loading}</div>
         <br/>
         <ItemList items={arrayProductos}/>
         </> )
