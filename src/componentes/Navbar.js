@@ -8,10 +8,12 @@ function NavBar ()  {
         <>
   <Navbar bg="primary" variant="dark">
     <Container>
-    <Navbar.Brand>Tienda Deportes</Navbar.Brand>
+    <Link className="nav-link" to={'/'}>
+    <Navbar.Brand>Tienda Deportes</Navbar.Brand></Link>
     <Nav className="me-auto">
-    <Link className="nav-link" to={'/'}>Inicio</Link>
-    <Link className="nav-link" to={'/'}>Acerca de nosotros</Link>
+    <Link className="nav-link" to={'/categoria/Camisetas'}>Camisetas</Link>
+    <Link className="nav-link" to={'/categoria/Shorts'}>Shorts</Link>
+    <Link className="nav-link" to={'/categoria/Otros'}>Otros</Link>
     </Nav>
     <CartWidget/>
     </Container>

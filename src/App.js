@@ -12,11 +12,15 @@ function App() {
       <NavBar/>
    <Switch>
    <Route exact path="/">
-   <ItemListContainer />
+      <ItemListContainer />
+   </Route>
+   <Route path="/categoria/:categoria">
+      <ItemListContainer />
    </Route>
    <Route path="/item/:id">
-   <ItemDetailContainer/>
+      <ItemDetailContainer/>
    </Route>
+   <Route patch="*"> <div className="p-3"> Hubo un error! - No existe la pagina</div></Route>
    </Switch>
    </BrowserRouter>
   </>
