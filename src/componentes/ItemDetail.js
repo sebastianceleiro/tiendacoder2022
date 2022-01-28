@@ -1,8 +1,14 @@
 import {Card, Container} from 'react-bootstrap' ;
 import ItemCount from './ItemCount' ;
+import { useState } from 'react';
 
 const ItemDetail = ({producto}) => {
 
+    const [mostrarItemCount, setMostrarItemCount] = useState (true)
+    const controlStock = (cantidad) => {
+        alert (`se esta haciendo el control... la cantidad es ${cantidad} `)
+        setMostrarItemCount (false);
+    }
 
     return (
             <>
@@ -15,9 +21,11 @@ const ItemDetail = ({producto}) => {
                 <Card.Text>{producto.descripcion}</Card.Text>
              </Card.Body>
              </Card>
-             <ItemCount  stock="10" cantidadInicial="1"/> 
-             </div>
+             { (mostrarItemCount == true) ?
+             <ItemCount stock={producto.stock} cantidadInicial="1" controlStock={controlStock}/> 
+             : <div></div>
+             }</div>
              </>)
-} ;
+}
 
 export default ItemDetail ;

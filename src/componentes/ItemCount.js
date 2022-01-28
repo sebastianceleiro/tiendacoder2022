@@ -1,7 +1,7 @@
 import react, {useState} from 'react' ;
 import { Button } from 'react-bootstrap';
 
-const ItemCount = ({stock,cantidadInicial}) => { 
+const ItemCount = ({stock,cantidadInicial,controlStock}) => { 
 
 const [cantidad, setCantidad]= useState (cantidadInicial) ;
 
@@ -15,6 +15,8 @@ const restarCantidad = () => {
 
 const onAdd = () => {
     alert (`Se han agregado ${cantidad} producto/s al carrito`)
+    controlStock(cantidad);
+
 }
     return  (
         <>  
