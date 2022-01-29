@@ -1,5 +1,6 @@
 import react, {useState} from 'react' ;
 import { Button } from 'react-bootstrap';
+import {Link} from 'react-router-dom' ;
 
 const ItemCount = ({stock,cantidadInicial,controlStock}) => { 
 
@@ -14,7 +15,6 @@ const restarCantidad = () => {
 }
 
 const onAdd = () => {
-    alert (`Se han agregado ${cantidad} producto/s al carrito`)
     controlStock(cantidad);
 
 }
@@ -25,7 +25,7 @@ const onAdd = () => {
                 {cantidad}
                 <Button className="m-2 border border-secondary " variant="inherit" size="sm" onClick={sumarCantidad}>+</Button>
                 <br></br>
-                <Button className="m-2" variant="secondary" size="sm" onClick={onAdd}>Comprar</Button>
+                <Link to="/Cart"><Button className="m-2" variant="secondary" size="sm" onClick={onAdd}>Comprar</Button></Link>
             </div>
     
         </> )} ;

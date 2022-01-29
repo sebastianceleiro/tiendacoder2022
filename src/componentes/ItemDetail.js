@@ -6,7 +6,7 @@ const ItemDetail = ({producto}) => {
 
     const [mostrarItemCount, setMostrarItemCount] = useState (true)
     const controlStock = (cantidad) => {
-        alert (`se esta haciendo el control... la cantidad es ${cantidad} `)
+        alert (`Se van a descontar ${cantidad}  producto/s`)
         setMostrarItemCount (false);
     }
 

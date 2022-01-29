@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './componentes/ItemListContainer';
 import ItemDetailContainer from './componentes/ItemDetailContainer'; 
 import {Route, Switch, BrowserRouter} from 'react-router-dom' ;
+import {CartContext} from './componentes/CartContext' ;
 
 
 function App() {
@@ -14,12 +15,14 @@ function App() {
    <Route exact path="/">
       <ItemListContainer />
    </Route>
+   <CartContext>
    <Route path="/categoria/:categoria">
       <ItemListContainer />
    </Route>
    <Route path="/item/:id">
       <ItemDetailContainer/>
    </Route>
+   </CartContext>
    <Route patch="*"> <div className="p-3"> Hubo un error! - No existe la pagina</div></Route>
    </Switch>
    </BrowserRouter>
