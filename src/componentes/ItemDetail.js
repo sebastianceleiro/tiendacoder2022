@@ -1,14 +1,17 @@
 import {Card, Container} from 'react-bootstrap' ;
 import ItemCount from './ItemCount' ;
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import {Context}  from './CartContext';
 
 const ItemDetail = ({producto}) => {
 
+    const {agregarContext} = useContext (Context) ;
     const [mostrarItemCount, setMostrarItemCount] = useState (true)
     const controlStock = (cantidad) => {
         alert (`Se van a descontar ${cantidad}  producto/s`)
         setMostrarItemCount (false);
-    }
+        agregarContext(producto);
+            }
 
     return (
             <>
