@@ -12,10 +12,10 @@ function App() {
    <BrowserRouter>
       <NavBar/>
    <Switch>
+   <CartContext>
    <Route exact path="/">
       <ItemListContainer />
    </Route>
-   <CartContext>
    <Route path="/categoria/:categoria">
       <ItemListContainer />
    </Route>

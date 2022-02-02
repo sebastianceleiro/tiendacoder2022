@@ -22,9 +22,9 @@ const ItemListContainer = () => {
              
         promesa.then(res => {
             setArrayProductos (res)
-            console.log(categoria)
+      
             if (categoria != undefined) {setArrayProductos (res.filter(producto => producto.categoria === categoria) ) } ;
-            console.log(arrayProductos);
+            
             setLoading ("") ;
         })
      

@@ -5,12 +5,13 @@ import {Context}  from './CartContext';
 
 const ItemDetail = ({producto}) => {
 
-    const {agregarContext} = useContext (Context) ;
+    const {agregarCarrito} = useContext (Context) ;
     const [mostrarItemCount, setMostrarItemCount] = useState (true)
-    const controlStock = (cantidad) => {
-        alert (`Se van a descontar ${cantidad}  producto/s`)
+
+    const onAdd = (cantidad) => {
+        alert (`Se van a descontar ${cantidad} producto/s`)
         setMostrarItemCount (false);
-        agregarContext(producto);
+        agregarCarrito(producto,cantidad);
             }
 
     return (
@@ -25,7 +26,7 @@ const ItemDetail = ({producto}) => {
              </Card.Body>
              </Card>
              { (mostrarItemCount == true) ?
-             <ItemCount stock={producto.stock} cantidadInicial="1" controlStock={controlStock}/> 
+             <ItemCount stock={producto.stock} cantidadInicial='1' onAdd={onAdd}/> 
              : <div></div>
              }</div>
              </>)
