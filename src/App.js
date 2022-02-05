@@ -4,15 +4,17 @@ import ItemListContainer from './componentes/ItemListContainer';
 import ItemDetailContainer from './componentes/ItemDetailContainer'; 
 import {Route, Switch, BrowserRouter} from 'react-router-dom' ;
 import {CartContext} from './componentes/CartContext' ;
+import Cart from './componentes/Cart'
 
 
 function App() {
   return (
    <>
    <BrowserRouter>
+   <CartContext>
       <NavBar/>
    <Switch>
-   <CartContext>
+   
    <Route exact path="/">
       <ItemListContainer />
    </Route>
@@ -22,9 +24,11 @@ function App() {
    <Route path="/item/:id">
       <ItemDetailContainer/>
    </Route>
-   </CartContext>
-   <Route patch="*"> <div className="p-3"> Hubo un error! - No existe la pagina</div></Route>
+   <Route path="/cart">
+      <Cart/>
+   </Route>
    </Switch>
+   </CartContext>
    </BrowserRouter>
   </>
   );
