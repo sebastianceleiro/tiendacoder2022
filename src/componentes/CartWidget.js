@@ -17,6 +17,6 @@ useEffect(() => {
 if (cantidad != 0) {
     return (
     <>
-    <b className="text-light">Finalizar Compra  </b><BsCart2 size="2em" color="white" />  <b className="text-light">{cantidad}</b>
+    <BsCart2 size="2em" color="white" />  <b className="text-light">{cantidad}</b>
     </>) }   else { return <div></div>  }} ;
 export default CartWidget ;

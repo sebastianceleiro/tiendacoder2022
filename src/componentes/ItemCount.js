@@ -7,11 +7,11 @@ const ItemCount = ({stock,cantidadInicial,onAdd}) => {
 const [cantidad, setCantidad]= useState (parseInt(cantidadInicial)) ;
 
 const sumarCantidad = () => {
-    (cantidad < stock) ? setCantidad  (parseInt(cantidad ) + 1) : alert("No hay tanto stock disponible");
+    (cantidad < stock) ? setCantidad  (parseInt(cantidad ) + 1) : alert("La cantidad supera el stock disponible");
 }
 
 const restarCantidad = () => {
-    (cantidad >= 2) ? setCantidad (parseInt(cantidad) - 1) : alert ("Al menos debe haber 1 producto") ;
+    (cantidad >= 2) ? setCantidad (parseInt(cantidad) - 1) : <></> ;
 }
 
 

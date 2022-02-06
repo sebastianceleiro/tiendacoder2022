@@ -9,7 +9,6 @@ const ItemDetail = ({producto}) => {
     const [mostrarItemCount, setMostrarItemCount] = useState (true)
 
     const onAdd = (cantidad) => {
-        alert (`Se van a descontar ${cantidad} producto/s`)
         setMostrarItemCount (false);
         agregarCarrito(producto,cantidad);
             }
