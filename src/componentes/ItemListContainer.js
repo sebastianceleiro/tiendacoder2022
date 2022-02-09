@@ -16,8 +16,8 @@ const ItemListContainer = () => {
         const db = getFirestore () ;
         const itemColecction = db.collection("producto") ;
        
+        console.log ("esta es la categoria", categoria)
 
-        console.log (categoria)
         if (categoria !== undefined)  {
             const itemPorCategoria = itemColecction.where("categoria","==", categoria ) ;
             itemPorCategoria.get()
@@ -59,7 +59,7 @@ const ItemListContainer = () => {
         })
     }
 
-    },[],[categoria])
+    },[categoria])
 
     
     return ( 
