@@ -1,40 +1,72 @@
 
 import ItemList from './ItemList' ;
-import productos from '../productos/productos';
 import { useState, useEffect } from 'react';
 import {Spinner} from 'react-bootstrap' ;
 import {useParams} from 'react-router-dom' 
+import {getFirestore} from '../firebase/firebase' ;
 
 const ItemListContainer = () => {
 
     const {categoria} = useParams();
-    const [arrayProductos, setArrayProductos] = useState([]) ;
+    const [items, setItems] = useState ([]) ;
     const [loading, setLoading] = useState (<Spinner animation="border" variant="primary"/>) ;
 
-
-    const promesa = new Promise ((resolve) => {
-        setTimeout(() => {
-        resolve (productos)
-        }, 1000);
-    })
-
     useEffect (() =>  {
-             
-        promesa.then(res => {
-            setArrayProductos (res)
-      
-            if (categoria != undefined) {setArrayProductos (res.filter(producto => producto.categoria === categoria) ) } ;
-            
-            setLoading ("") ;
-        })
-     
-    },[categoria])
 
+        const db = getFirestore () ;
+        const itemColecction = db.collection("producto") ;
+       
+
+        console.log (categoria)
+        if (categoria !== undefined)  {
+            const itemPorCategoria = itemColecction.where("categoria","==", categoria ) ;
+            itemPorCategoria.get()
+            .then((querySnapShot) =>  {
+                if (querySnapShot.size === 0) {
+                    console.log ("no se encontraron documentos");
+                    setLoading ("") ;
+                    return
+                }
+                console.log ("hay documentos") ;
+    
+            setItems (querySnapShot.docs.map((doc) => {
+                    return {id: doc.id, ...doc.data()}}))
+                    
+                    setLoading ("") ;
+            }
+            )
+            .catch ((err) => {
+                console.log (err) ;
+            })  }
+  else {
+        itemColecction.get()
+        .then((querySnapShot) =>  {
+            if (querySnapShot.size === 0) {
+                console.log ("no se encontraron documentos");
+                setLoading ("") ;
+                return
+            }
+            console.log ("hay documentos") ;
+
+        setItems (querySnapShot.docs.map((doc) => {
+                return {id: doc.id, ...doc.data()}}))
+                
+                setLoading ("") ;
+        }
+        )
+        .catch ((err) => {
+            console.log (err) ;
+        })
+    }
+
+    },[],[categoria])
+
+    
     return ( 
         <>
         <div className="w-25 mt-2 text-center m-auto"> {loading}</div>
         <br/>
-        <ItemList items={arrayProductos}/>
+        <ItemList items={items}/>  
         </> )
 }
 
