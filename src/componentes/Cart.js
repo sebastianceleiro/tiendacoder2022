@@ -1,7 +1,9 @@
 import {Context}  from './CartContext';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import {Link} from 'react-router-dom' ;
 import { Button } from 'react-bootstrap';
+import firebase from 'firebase';
+import { getFirestore } from '../firebase/firebase';
 
 
 const Cart = () => {
@@ -10,6 +12,36 @@ const Cart = () => {
 
     const [total, setTotal] = useState () ;
 
+    const mail = useRef() ;
+    const nombre = useRef();
+    const telefono = useRef() ;
+
+    const capturarDatos = () => {
+
+        const db = getFirestore() ;
+        const ordenes = db.collection("ordenes")
+ 
+        const orden = { 
+            datosCliente:{
+            nombre: nombre.current.value,
+            mail: mail.current.value, 
+            telefono: telefono.current.value}, 
+            datosProducto: { carrito: carrito},
+            total: total,
+            fecha: firebase.firestore.Timestamp.fromDate(new Date())
+        }
+
+
+        
+        ordenes.add(orden)
+        .then ( () => {
+            console.log ("se inserto la orden", orden)
+        })
+        .catch((err) => {
+            console.log (err, "hubo un error")
+        })
+    }
+    
     useEffect(()=> {
         setTotal (calcularTotal())
     },[borrarUno], [])
@@ -33,8 +65,16 @@ const Cart = () => {
         <b onClick={borrarCarrito}>Vaciar Carrito</b>
         <p></p>
         <b className="h5">Total Productos: $</b>{total}
-        <p></p>
-        <Button className="bg-primary">Terminar mi compra</Button>
+        <p/>
+        <input type="text" name="nombre" ref={nombre}  placeholder="Ingrese su nombre"/>
+        <p/>
+        <p/>
+        <input type="text" name="mail" ref={mail} placeholder="ingreso su e-mail" />
+        <p/>
+        <p/>
+        <input type="text" name="telefono" ref={telefono} placeholder="ingrese su telefono" />
+        <p/>
+        <Button className="bg-primary" onClick={capturarDatos}>Terminar mi compra</Button>
         </div>
         </>
 

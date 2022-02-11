@@ -33,17 +33,6 @@ const ItemDetailContainer = () => {
             console.log (err) ;
         })
 
-
-   /* const promesa = new Promise ((resolve) => 
-        {
-        setTimeout(() => {
-        resolve (productos)
-        }, 1000);
-}) ; 
-    promesa.then(res => {
-        setArrayDeProductos (res[id]) ; // Mando un producto en concreto
-        setTerminoLaPromesa (true) ;
-    }) */
 }, [])
 
 
