@@ -8,9 +8,10 @@ import { getFirestore } from '../firebase/firebase';
 
 const Cart = () => {
 
-    const {carrito, borrarCarrito, borrarUno, calcularTotal} = useContext (Context) ;
+    const {carrito, setCarrito,  borrarCarrito, borrarUno, calcularTotal} = useContext (Context) ;
 
     const [total, setTotal] = useState () ;
+    const [ordenRealizada, setOrdenRealizada] = useState () ;
 
     const mail = useRef() ;
     const nombre = useRef();
@@ -31,11 +32,10 @@ const Cart = () => {
             fecha: firebase.firestore.Timestamp.fromDate(new Date())
         }
 
-
-        
         ordenes.add(orden)
-        .then ( () => {
-            console.log ("se inserto la orden", orden)
+        .then (({id}) => {
+            setOrdenRealizada (id) ;
+            setCarrito ([]) ;
         })
         .catch((err) => {
             console.log (err, "hubo un error")
@@ -46,10 +46,16 @@ const Cart = () => {
         setTotal (calcularTotal())
     },[borrarUno], [])
     
-    {if (carrito.length != 0) {
-    return (
-        <>
-        <div className="p-3 w-50 m-auto text-center h4"> Carrito de Compras </div>
+    {   if (ordenRealizada != undefined) {
+      
+             return (
+                <>
+                {ordenRealizada && (<div className="p3 w-50 m-auto text-center">Se realizo correctamente el pedido de compra bajo el id: {ordenRealizada}</div> )})
+                </>
+    )}  else  if (carrito.length != 0) {
+            return (
+            <>
+            <div className="p-3 w-50 m-auto text-center h4"> Carrito de Compras </div>
             {carrito.map(items => {
             return ( 
             <>
