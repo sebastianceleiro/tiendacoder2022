@@ -21,26 +21,31 @@ const Cart = () => {
 
         const db = getFirestore() ;
         const ordenes = db.collection("ordenes")
+
+        if (nombre.current.value, mail.current.value,telefono.current.value != "") {
  
         const orden = { 
             datosCliente:{
             nombre: nombre.current.value,
             mail: mail.current.value, 
             telefono: telefono.current.value}, 
-            datosProducto: { carrito: carrito},
+            datosProducto: { carrito: carrito },
             total: total,
             fecha: firebase.firestore.Timestamp.fromDate(new Date())
         }
 
         ordenes.add(orden)
+       
         .then (({id}) => {
+             console.log (orden) ;
             setOrdenRealizada (id) ;
             setCarrito ([]) ;
         })
         .catch((err) => {
             console.log (err, "hubo un error")
         })
-    }
+    } else { alert ("ingrese todos los campos obligatorios")}
+}
     
     useEffect(()=> {
         setTotal (calcularTotal())
@@ -72,7 +77,7 @@ const Cart = () => {
         <p></p>
         <b className="h5">Total Productos: $</b>{total}
         <p/>
-        <input type="text" name="nombre" ref={nombre}  placeholder="Ingrese su nombre"/>
+        <input type="text" name="nombre" ref={nombre}  placeholder="Ingrese su nombre" required/>
         <p/>
         <p/>
         <input type="text" name="mail" ref={mail} placeholder="ingreso su e-mail" />
