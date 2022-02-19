@@ -9,25 +9,22 @@ const ItemListContainer = () => {
 
     const {categoria} = useParams();
     const [items, setItems] = useState ([]) ;
-    const [loading, setLoading] = useState (<Spinner animation="border" variant="primary"/>) ;
+    const [loading, setLoading] = useState (<Spinner animation="border" variant="dark"/>) ;
 
     useEffect (() =>  {
 
         const db = getFirestore () ;
         const itemColecction = db.collection("producto") ;
-       
-        console.log ("esta es la categoria", categoria)
 
         if (categoria !== undefined)  {
             const itemPorCategoria = itemColecction.where("categoria","==", categoria ) ;
             itemPorCategoria.get()
             .then((querySnapShot) =>  {
                 if (querySnapShot.size === 0) {
-                    console.log ("no se encontraron documentos");
+                    console.log ("No se encontraron documentos");
                     setLoading ("") ;
                     return
                 }
-                console.log ("hay documentos") ;
     
             setItems (querySnapShot.docs.map((doc) => {
                     return {id: doc.id, ...doc.data()}}))
@@ -42,11 +39,9 @@ const ItemListContainer = () => {
         itemColecction.get()
         .then((querySnapShot) =>  {
             if (querySnapShot.size === 0) {
-                console.log ("no se encontraron documentos");
                 setLoading ("") ;
                 return
             }
-            console.log ("hay documentos") ;
 
         setItems (querySnapShot.docs.map((doc) => {
                 return {id: doc.id, ...doc.data()}}))

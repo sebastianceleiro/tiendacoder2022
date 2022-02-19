@@ -1,14 +1,15 @@
 import ItemDetail from './ItemDetail';
 import {useState, useEffect} from 'react' ;
 import {useParams} from 'react-router-dom' ;
-import { Spinner } from 'react-bootstrap';
 import {getFirestore} from '../firebase/firebase' ;
+import {Spinner} from 'react-bootstrap' ;
 
 
 const ItemDetailContainer = () => {
 
     const [item, setItem] = useState ([]) ;
     const {id} = useParams() ;
+    const [loading, setLoading] = useState (<Spinner animation="border" variant="dark"/>) ;
 
     useEffect(() => {
 
@@ -20,12 +21,12 @@ const ItemDetailContainer = () => {
         miItem.get()
         .then((doc) =>  {
             if (!doc.exists) {
-                console.log ("no se encontro el producto");
+                console.log ("No se encontro el producto");
                 return
             }
-            console.log ("se encontro el producto") ;
 
         setItem ( {id: doc.id, ...doc.data()})
+        setLoading ("") ;
                 
         }
         )
@@ -37,6 +38,7 @@ const ItemDetailContainer = () => {
 
 
     return ( <>
+             <div className="w-25 mt-2 text-center m-auto"> {loading}</div>
              <ItemDetail producto={item}/> 
              </>) 
 } ;

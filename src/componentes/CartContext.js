@@ -17,7 +17,6 @@ export const CartContext = ({children}) => {
     }
 
     const borrarCarrito = () => {
-        console.log (" borrando el carrito")
         setCarrito ([]) ;
     }
 
@@ -34,7 +33,7 @@ export const CartContext = ({children}) => {
     const calcularTotal = () => {
         if (carrito.length != 0) {
         return carrito.map (producto => producto.item.precio * producto.cantidad).reduce ((a,b) => a + b) 
-        } else { console.log (" no se calcula nada")}
+        } 
     }
 
     const cantidadDeProductos = () => {

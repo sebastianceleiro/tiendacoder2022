@@ -42,7 +42,7 @@ const Cart = () => {
             setCarrito ([]) ;
         })
         .catch((err) => {
-            console.log (err, "hubo un error")
+            console.log (err, "Hubo un error")
         })
     } else { alert ("ingrese todos los campos obligatorios")}
 }
@@ -55,7 +55,7 @@ const Cart = () => {
       
              return (
                 <>
-                {ordenRealizada && (<div className="p3 w-50 m-auto text-center">Se realizo correctamente el pedido de compra bajo el id: {ordenRealizada}</div> )})
+                {ordenRealizada && (<div className="mt-3 w-50 m-auto text-center">Se realizo correctamente el pedido de compra bajo el id: {ordenRealizada}</div> )})
                 </>
     )}  else  if (carrito.length != 0) {
             return (
@@ -77,13 +77,13 @@ const Cart = () => {
         <p></p>
         <b className="h5">Total Productos: $</b>{total}
         <p/>
-        <input type="text" name="nombre" ref={nombre}  placeholder="Ingrese su nombre" required/>
+        <input type="text" name="nombre" ref={nombre}  placeholder="Ingrese su nombre" className="text-center"/>
         <p/>
         <p/>
-        <input type="text" name="mail" ref={mail} placeholder="ingreso su e-mail" />
+        <input type="text" name="mail" ref={mail} placeholder="ingrese su e-mail" className="text-center" />
         <p/>
         <p/>
-        <input type="text" name="telefono" ref={telefono} placeholder="ingrese su telefono" />
+        <input type="text" name="telefono" ref={telefono} placeholder="ingrese su telefono"  className="text-center"/>
         <p/>
         <Button className="bg-primary" onClick={capturarDatos}>Terminar mi compra</Button>
         </div>

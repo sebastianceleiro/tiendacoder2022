@@ -15,7 +15,7 @@ const ItemDetail = ({producto}) => {
 
     return (
             <>
-            <div className="bg-light border w-50 m-auto text-center">Item Detail 
+            <div className="bg-light border-light w-50 m-auto text-center">
             <Card className="m-auto" style={{ width: '20rem' }}>
             <Card.Body>
                 <Card.Title>{producto.nombre}</Card.Title>

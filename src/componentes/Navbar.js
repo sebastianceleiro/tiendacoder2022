@@ -6,10 +6,19 @@ function NavBar ()  {
 
     return ( 
         <>
-  <Navbar bg="primary" variant="dark">
+  <Navbar bg="dark" variant="dark">
     <Container>
     <Link className="nav-link" to={'/'}>
-    <Navbar.Brand>Tienda Deportes</Navbar.Brand></Link>
+    <Navbar.Brand href="#home">
+        <img
+          alt=""
+          src="/icohome.png"
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />{' '}
+      ReactSports
+      </Navbar.Brand></Link>
     <Nav className="me-auto">
     <Link className="nav-link" to={'/categoria/Camisetas'}>Camisetas</Link>
     <Link className="nav-link" to={'/categoria/Shorts'}>Shorts</Link>

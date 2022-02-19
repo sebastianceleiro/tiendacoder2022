@@ -1,17 +1,16 @@
 import { Card } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 
-const Item = ({id, nombre, descripcion, precio,url}) => {
+const Item = ({id, nombre, precio,url}) => {
     return ( <>
            
-            <Card className="bg-primary bg-gradient text-white" style={{ width: '15rem' }} >
+            <Card className="bg-light border-light text-black text-center" style={{ width: '14rem', heigth: '10rem' }} >
             <Link to={`/item/${id}`}>
-            <Card.Img variant="top" src={url} />
+            <Card.Img variant="top" src={url} style={{ width: '10rem', heigth: '3rem' }} />
             </Link>
             <Card.Body>
                 <Card.Title>{nombre}</Card.Title>
-                <Card.Subtitle className="mb-2 text-white">${precio}</Card.Subtitle>
-                <Card.Text>{descripcion}</Card.Text>
+                <p className="m-auto w-100 text-center text-dark h5 " >${precio}</p>
              </Card.Body>
              </Card>
             
