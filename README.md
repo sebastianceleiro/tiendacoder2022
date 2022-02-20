@@ -17,13 +17,13 @@ El website tiene un carrito en el cual se puede ir agregando productos segu el s
 
 ### Tecnologias utilizadas:
 
-*Javascript
-*React JS
-*Firebase
-*React Bootstrap
+* Javascript
+* React JS
+* Firebase
+* React Bootstrap
 
 ### Capturas de Pantalla de la aplicacion:
 
-![](imagenes/1readme.png)
-![](imagenes/2readme.png)
-![](imagenes/3readme.png)
+![](/public/imagenes/1readme.png)
+![](/public/imagenes/2readme.png)
+![](/public/imagenes/3readme.png)
