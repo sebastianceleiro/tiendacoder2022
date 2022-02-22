@@ -22,8 +22,8 @@ const Cart = () => {
         const db = getFirestore() ;
         const ordenes = db.collection("ordenes")
 
-        if (nombre.current.value, mail.current.value,telefono.current.value != "") {
-
+        if (nombre.current.value, mail.current.value,telefono.current.value != ""  && mail.current.value.includes('@')) {
+   
         const productoOrden = carrito.map(producto => {
 
             return {
@@ -48,12 +48,12 @@ const Cart = () => {
         .then (({id}) => {
             console.log (orden) ;
             setOrdenRealizada (id) ;
-            setCarrito ([]) ;
+            setCarrito ([]) ; 
         })
         .catch((err) => {
             console.log (err, "Hubo un error")
         })
-    } else { setValidacionDatos ("Por favor complete todos los campos")}
+    } else { setValidacionDatos ("Por favor complete todos los campos e ingrese un E-mail valido")}
 }
     
     useEffect(()=> {
