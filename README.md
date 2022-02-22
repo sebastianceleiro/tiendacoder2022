@@ -1,8 +1,5 @@
 ## E-commerce de Deportes
 
-### Demo de prueba
-
-[`https://github.com/sebastianceleiro/tiendacoder2022`](https://github.com/sebastianceleiro/tiendacoder2022)  
 
 ### Descripcion
 

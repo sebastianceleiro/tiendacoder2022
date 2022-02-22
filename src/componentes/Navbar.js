@@ -1,4 +1,4 @@
-import {Navbar, Container, Nav} from 'react-bootstrap'
+import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
 import CartWidget from './CartWidget';
 import {Link} from 'react-router-dom' ;
 
@@ -6,9 +6,9 @@ function NavBar ()  {
 
     return ( 
         <>
-  <Navbar bg="dark" variant="dark">
-    <Container>
-    <Link className="nav-link" to={'/'}>
+<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Container>
+  <Link className="nav-link" to={'/'}>
     <Navbar.Brand href="#home">
         <img
           alt=""
@@ -19,14 +19,19 @@ function NavBar ()  {
         />{' '}
       ReactSports
       </Navbar.Brand></Link>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
     <Link className="nav-link" to={'/categoria/Camisetas'}>Camisetas</Link>
     <Link className="nav-link" to={'/categoria/Shorts'}>Shorts</Link>
     <Link className="nav-link" to={'/categoria/Otros'}>Otros</Link>
     </Nav>
+    <Nav>
     <Link to={'/cart'}><CartWidget/></Link>
-    </Container>
-  </Navbar>
+    </Nav>
+  </Navbar.Collapse>
+  </Container>
+</Navbar>
 </>
     )
 }

@@ -7,7 +7,7 @@ const ItemList = ({items}) => {
              <Container>
              <Row>
                 {items.map(item => {
-                   return ( <Col sm={3}><Item 
+                   return ( <Col xs={12} sm={4} md={3} lg={3} xl={3} className="row justify-content-center"><Item 
                                 id={item.id}
                                 nombre={item.nombre}
                                 precio= {item.precio}

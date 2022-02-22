@@ -14,7 +14,6 @@ function App() {
    <CartContext>
       <NavBar/>
    <Switch>
-   
    <Route exact path="/">
       <ItemListContainer />
    </Route>
